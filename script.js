@@ -135,6 +135,31 @@ document.querySelectorAll('.timeline-item').forEach(item => {
     });
 });
 
+// Contact Form Handler
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        
+        // Create mailto link
+        const mailtoLink = `mailto:ishrak.ahmed2@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Optional: Show success message
+        alert('Opening your email client...');
+        
+        // Reset form
+        contactForm.reset();
+    });
+}
+
 // Project Documents Data
 const documents = {
     secarch: {
