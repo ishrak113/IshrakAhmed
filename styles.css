@@ -846,6 +846,119 @@ section {
 .cert-status {
     color: var(--warning-color);
     font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.credential-tab {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(5, 150, 105, 0.25) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid var(--glass-border);
+    border-radius: 0 0 15px 15px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.cert-card:hover .credential-tab {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.credential-tab i {
+    font-size: 1.2rem;
+    color: var(--bottle-green-light);
+    animation: bounceArrow 1.5s infinite;
+}
+
+.credential-tab span {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.credential-tab:hover {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.4) 0%, rgba(5, 150, 105, 0.35) 100%);
+    transform: translateY(-2px);
+}
+
+@keyframes bounceArrow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* Credential Modal Styling */
+.credential-display {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.credential-badge {
+    width: 100%;
+    max-width: 500px;
+    background: rgba(16, 185, 129, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 1rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.credential-info {
+    text-align: center;
+    max-width: 500px;
+}
+
+.credential-info h3 {
+    color: var(--bottle-green-light);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.credential-info p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.credential-external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--bottle-green-light);
+    text-decoration: none;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.credential-external-link:hover {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--bottle-green-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    text-decoration: none;
 }
 
 .cert-card.in-progress {
@@ -1626,17 +1739,8 @@ section {
 }
 
 .contact-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-}
-
-@media (max-width: 968px) {
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
 }
 
 .contact-info h3 {

@@ -135,30 +135,37 @@ document.querySelectorAll('.timeline-item').forEach(item => {
     });
 });
 
-// Contact Form Handler
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
-        
-        // Create mailto link
-        const mailtoLink = `mailto:ishrak.ahmed2@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-        
-        // Open email client
-        window.location.href = mailtoLink;
-        
-        // Optional: Show success message
-        alert('Opening your email client...');
-        
-        // Reset form
-        contactForm.reset();
-    });
+// Credential Modal Functions
+function openCredentialModal() {
+    const modal = document.getElementById('credentialModal');
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
+
+function closeCredentialModal() {
+    const modal = document.getElementById('credentialModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+// Close credential modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const credentialModal = document.getElementById('credentialModal');
+        if (credentialModal && credentialModal.classList.contains('active')) {
+            closeCredentialModal();
+        }
+    }
+});
+
+// Close credential modal when clicking outside
+document.getElementById('credentialModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'credentialModal') {
+        closeCredentialModal();
+    }
+});
+
+
 
 // Project Documents Data
 const documents = {
